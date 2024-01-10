@@ -7,3 +7,7 @@ function Quest(name, difficulty, points, releaseDate, completed) {
   this.releaseDate = releaseDate;
   this.completed = completed;
 }
+
+function addQuestToQuestLog() {
+  questLog.push(new Quest());
+}
