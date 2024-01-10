@@ -4,8 +4,18 @@
   box-sizing: border-box;
 }
 
+:root {
+  --main-text-color: #f1f1f1;
+  --main-background-color: #0f0f0f;
+}
+
 body {
   height: 100vh;
-  color: #f1f1f1;
-  background-color: #0f0f0f;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+}
+
+table, th, td {
+  border: 1px solid var(--main-text-color);
+  border-collapse: collapse;
 }
