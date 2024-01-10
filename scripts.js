@@ -1,9 +1,9 @@
-function Quest(name, difficulty, points, releaseDate, completed) {
+function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
   this.difficulty = difficulty;
   this.points = points;
   this.releaseDate = releaseDate;
-  this.completed = completed;
+  this.status = status;
 }
 
 function addQuestToQuestLog() {
