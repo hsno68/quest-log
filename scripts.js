@@ -16,9 +16,16 @@ function updateQuestLogDisplay() {
   for (let quest of questLog) {
     const tableRow = document.createElement("tr");
     for (let prop in quest) {
-      const tableData = document.createElement("td");
-      tableData.textContent = quest[prop];
-      tableRow.appendChild(tableData);
+      let tableCell;
+      if (prop === "name") {
+        tableCell = document.createElement("th");
+        tableCell.setAttribute("scope", "row");
+      }
+      else {
+        tableCell = document.createElement("td");
+      }
+      tableCell.textContent = quest[prop];
+      tableRow.appendChild(tableCell);
     }
     table.appendChild(tableRow);
   }
