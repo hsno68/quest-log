@@ -37,7 +37,7 @@ th, td {
   padding: 10px;
 }
 
-button.new-button {
+table + button {
   color: var(--main-text-color);
   background-color: var(--main-background-contrast);
   font-weight: bold;
@@ -47,7 +47,7 @@ button.new-button {
   transition: all 0.2s ease-in-out;
 }
 
-button.new-button:hover {
+table + button:hover {
   cursor: pointer;
   background-color: var(--main-contrast-hover);
 }
