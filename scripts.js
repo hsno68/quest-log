@@ -1,4 +1,4 @@
-const questTable = document.querySelector(".quest-table");
+const table = document.querySelector(".quest-table-body");
 
 function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
@@ -20,7 +20,7 @@ function updateQuestLogDisplay() {
       tableData.textContent = quest[prop];
       tableRow.appendChild(tableData);
     }
-    questTable.appendChild(tableRow);
+    table.appendChild(tableRow);
   }
 }
 
