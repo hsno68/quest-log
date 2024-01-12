@@ -23,6 +23,31 @@
     <tbody class="quest-table-body">
     </tbody>
   </table>
-  <button type="button">New Quest</button>
+  <form id="form">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div>
+      <label for="difficulty">Difficulty</label>
+      <input type="text" id="difficulty" name="difficulty">
+    </div>
+    <div>
+      <label for="points">Quest Points</label>
+      <input type="text" id="points" name="points">
+    </div>
+    <div>
+      <label for="release-date">Release Date</label>
+      <input type="text" id="release-date" name="releaseDate">
+    </div>
+    <fieldset>
+      <legend>Status</legend>
+      <label for="status-available">Available</label>
+      <input type="radio" id="status-available" name="status" value="false" checked>
+      <label for="status-complete">Completed</label>
+      <input type="radio" id="status-complete" name="status" value="true">
+    </fieldset>
+    <button type="submit" form="form">Add Quest</button>
+  </form>
 </body>
 </html>

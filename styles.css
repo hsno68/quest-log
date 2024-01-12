@@ -6,9 +6,9 @@
 
 :root {
   --main-text-color: #f1f1f1;
+  --main-border-color: #303030;
   --main-background-color: #0f0f0f;
   --main-background-contrast: #222222;
-  --main-contrast-hover: #303030;
 }
 
 body {
@@ -37,7 +37,7 @@ th, td {
   padding: 10px;
 }
 
-table + button {
+form button {
   color: var(--main-text-color);
   background-color: var(--main-background-contrast);
   font-weight: bold;
@@ -47,7 +47,17 @@ table + button {
   transition: all 0.2s ease-in-out;
 }
 
-table + button:hover {
+form button:hover {
   cursor: pointer;
-  background-color: var(--main-contrast-hover);
+  background-color: var(--main-border-color);
+}
+
+form div input {
+  width: 100%;
+  appearance: none;
+  color: var(--main-text-color);
+  background-color: var(--main-background-contrast);
+  border: 1px solid var(--main-border-color);
+  border-radius: 5px;
+  padding: 5px;
 }
