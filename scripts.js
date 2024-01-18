@@ -22,17 +22,25 @@ form.addEventListener("submit", (e) => {
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
-  updateQuestTable(newQuest);
   form.reset();
 });
 
 function updateQuestLog(quest) {
   questLog.push(quest);
+  updateQuestTable(quest);
 }
 
 //Update DOM
 function updateQuestTable(quest) {
+  const questIndex = questLog.length - 1;
+
   const tableRow = document.createElement("tr");
+  tableRow.classList.add(`${questIndex}`);
+
+  const removeButton = document.createElement("span");
+  removeButton.classList.add("material-symbols-outlined", "remove", `${questIndex}`);
+  removeButton.textContent = "remove";
+
   for (let prop in quest) {
     let tableCell;
     if (prop === "name") {
@@ -45,6 +53,7 @@ function updateQuestTable(quest) {
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
   }
+  tableRow.appendChild(removeButton);
   table.appendChild(tableRow);
 }
 
@@ -62,11 +71,7 @@ const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", "Complet
 const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", "Available");
 const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", "Available");
 
-const questLog = [quest1, quest2, quest3];
-populateInitialQuestLog();
-
-function populateInitialQuestLog() {
-  for (let initialQuest of questLog) {
-    updateQuestTable(initialQuest);
-  }
-}
+const questLog = [];
+updateQuestLog(quest1);
+updateQuestLog(quest2);
+updateQuestLog(quest3);
