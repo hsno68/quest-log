@@ -56,7 +56,7 @@ form button:active {
   transform: translateY(5px);
 }
 
-form div.input-container input,
+input:not([type="radio"]),
 select {
   width: 100%;
   appearance: none;
