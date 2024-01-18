@@ -43,6 +43,10 @@ form {
   gap: 1rem;
 }
 
+form > div {
+  height: 55px;
+}
+
 form button {
   color: var(--main-text-color);
   background-color: var(--main-background-contrast);
@@ -72,6 +76,18 @@ select {
   border-radius: 5px;
   margin-top: 8px;
   padding: 5px;
+}
+
+form > div:last-of-type {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+form > div:last-of-type > div {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 input[type="radio"] {
