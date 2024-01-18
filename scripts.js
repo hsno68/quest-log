@@ -21,6 +21,7 @@ form.addEventListener("submit", (e) => {
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
   updateQuestTable(newQuest);
+  form.reset();
 });
 
 function updateQuestLog(quest) {
