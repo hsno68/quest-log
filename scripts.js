@@ -4,11 +4,25 @@ const form = document.querySelector(".quest-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const questName = document.querySelector("#name").value;
-  const questDifficulty = document.querySelector("#difficulty").value;
-  const questPoints = document.querySelector("#points").value;
-  const questReleaseDate = document.querySelector("#release-date").value;
-  const questStatus = document.querySelector('input[name="status"]:checked').value;
+  const questNameElement = document.querySelector("#name");
+  const questDifficultyElement = document.querySelector("#difficulty");
+  const questPointsElement = document.querySelector("#points");
+  const questReleaseDateElement = document.querySelector("#release-date");
+  const questStatusElement = document.querySelector('input[name="status"]:checked');
+
+  let questName = questNameElement.value;
+  let questDifficulty = questDifficultyElement.value;
+  let questPoints = questPointsElement.value;
+  let questStatus = questStatusElement.value;
+  let questReleaseDate = ((date) => {
+    if (!date) {
+      return;
+    }
+    const month = date.substring(5, 7);
+    const day = date.substring(8);
+    const year = date.substring(0, 4);
+    return (`${month}/${day}/${year}`);
+  })(questReleaseDateElement.value);
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
@@ -44,9 +58,9 @@ function Quest(name, difficulty, points, releaseDate, status) {
   this.status = status;
 }
 
-const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", true);
-const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", false);
-const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", false);
+const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", "Completed");
+const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", "Available");
+const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", "Available");
 
 const questLog = [quest1, quest2, quest3];
 populateInitialQuestLog();
