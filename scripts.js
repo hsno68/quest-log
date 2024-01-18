@@ -1,4 +1,21 @@
 const table = document.querySelector(".quest-table-body");
+const form = document.querySelector(".quest-form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const questName = document.querySelector("#name").value;
+  const questDifficulty = document.querySelector("#difficulty").value;
+  const questPoints = document.querySelector("#points").value;
+  const questReleaseDate = document.querySelector("#release-date").value;
+  const questStatus = document.querySelector('input[name="status"]:checked').value;
+
+  addQuestToQuestLog(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
+});
+
+function addQuestToQuestLog(name, difficulty, points, releaseDate, status) {
+  questLog.push(new Quest(name, difficulty, points, releaseDate, status));
+}
 
 function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
@@ -6,10 +23,6 @@ function Quest(name, difficulty, points, releaseDate, status) {
   this.points = points;
   this.releaseDate = releaseDate;
   this.status = status;
-}
-
-function addQuestToQuestLog() {
-  questLog.push(new Quest());
 }
 
 function updateQuestLogDisplay() {
