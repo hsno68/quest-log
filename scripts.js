@@ -4,17 +4,11 @@ const form = document.querySelector(".quest-form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const questNameElement = document.querySelector("#name");
-  const questDifficultyElement = document.querySelector("#difficulty");
-  const questPointsElement = document.querySelector("#points");
-  const questReleaseDateElement = document.querySelector("#release-date");
-  const questStatusElement = document.querySelector('input[name="status"]:checked');
-
-  let questName = questNameElement.value;
-  let questDifficulty = questDifficultyElement.value;
-  let questPoints = questPointsElement.value;
-  let questStatus = questStatusElement.value;
-  let questReleaseDate = ((date) => {
+  const questName = document.querySelector("#name").value;
+  const questDifficulty = document.querySelector("#difficulty").value;
+  const questPoints = document.querySelector("#points").value;
+  const questStatus = document.querySelector('input[name="status"]:checked').value;
+  const questReleaseDate= ((date) => {
     if (!date) {
       return;
     }
@@ -22,7 +16,7 @@ form.addEventListener("submit", (e) => {
     const day = date.substring(8);
     const year = date.substring(0, 4);
     return (`${month}/${day}/${year}`);
-  })(questReleaseDateElement.value);
+  })(document.querySelector("#release-date").value);
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
