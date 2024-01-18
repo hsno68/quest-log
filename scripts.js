@@ -1,6 +1,7 @@
 const table = document.querySelector(".quest-table-body");
 const form = document.querySelector(".quest-form");
 
+//Form submission
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -8,6 +9,7 @@ form.addEventListener("submit", (e) => {
   const questDifficulty = document.querySelector("#difficulty").value;
   const questPoints = document.querySelector("#points").value;
   const questStatus = document.querySelector('input[name="status"]:checked').value;
+  //Formats the parsed date
   const questReleaseDate= ((date) => {
     if (!date) {
       return;
@@ -28,6 +30,7 @@ function updateQuestLog(quest) {
   questLog.push(quest);
 }
 
+//Update DOM
 function updateQuestTable(quest) {
   const tableRow = document.createElement("tr");
   for (let prop in quest) {
@@ -45,6 +48,7 @@ function updateQuestTable(quest) {
   table.appendChild(tableRow);
 }
 
+//Constructor
 function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
   this.difficulty = difficulty;
@@ -53,6 +57,7 @@ function Quest(name, difficulty, points, releaseDate, status) {
   this.status = status;
 }
 
+//Initial placeholder
 const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", "Completed");
 const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", "Available");
 const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", "Available");
