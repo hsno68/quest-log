@@ -25,7 +25,7 @@ function Quest(name, difficulty, points, releaseDate, status) {
   this.status = status;
 }
 
-function updateQuestLogDisplay() {
+function populateInitialQuestLog() {
   for (let quest of questLog) {
     const tableRow = document.createElement("tr");
     for (let prop in quest) {
@@ -49,4 +49,4 @@ const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", fals
 const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", false);
 
 const questLog = [quest1, quest2, quest3];
-updateQuestLogDisplay();
+populateInitialQuestLog();
