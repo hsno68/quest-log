@@ -52,6 +52,10 @@ form button:hover {
   background-color: var(--main-border-color);
 }
 
+form button:active {
+  transform: translateY(5px);
+}
+
 form div.input-container input,
 select {
   width: 100%;
