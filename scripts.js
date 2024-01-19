@@ -45,8 +45,9 @@ function updateQuestTable(quest) {
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
   }
-  const removeButton = document.createElement("span");
-  removeButton.classList.add("material-symbols-outlined", "remove");
+  const removeButton = document.createElement("button");
+  removeButton.setAttribute("type", "button");
+  removeButton.classList.add("material-symbols-outlined", "remove-button");
   removeButton.textContent = "remove";
   removeButton.addEventListener("click", () => {
     table.removeChild(tableRow);

@@ -102,15 +102,17 @@ input::-webkit-inner-spin-button {
 }
 
 /*Remove quest "button"*/
-.remove {
+.remove-button {
   margin: 10px;
   padding: 5px;
+  border: none;
   border-radius: 50%;
+  color: var(--main-text-color);
   background-color: var(--main-background-contrast);
   transition: all 0.2s ease-in-out;
 }
 
-.remove:hover {
+.remove-button:hover {
   cursor: pointer;
   background-color: var(--main-border-color);
 }
