@@ -22,25 +22,17 @@ form.addEventListener("submit", (e) => {
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
+  updateQuestTable(newQuest);
   form.reset();
 });
 
 function updateQuestLog(quest) {
   questLog.push(quest);
-  updateQuestTable(quest);
 }
 
 //Update DOM
 function updateQuestTable(quest) {
-  const questIndex = questLog.length - 1;
-
   const tableRow = document.createElement("tr");
-  tableRow.classList.add(`${questIndex}`);
-
-  const removeButton = document.createElement("span");
-  removeButton.classList.add("material-symbols-outlined", "remove", `${questIndex}`);
-  removeButton.textContent = "remove";
-
   for (let prop in quest) {
     let tableCell;
     if (prop === "name") {
@@ -53,6 +45,12 @@ function updateQuestTable(quest) {
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
   }
+  const removeButton = document.createElement("span");
+  removeButton.classList.add("material-symbols-outlined", "remove");
+  removeButton.textContent = "remove";
+  removeButton.addEventListener("click", () => {
+    table.removeChild(tableRow);
+  });
   tableRow.appendChild(removeButton);
   table.appendChild(tableRow);
 }
@@ -75,3 +73,6 @@ const questLog = [];
 updateQuestLog(quest1);
 updateQuestLog(quest2);
 updateQuestLog(quest3);
+updateQuestTable(quest1);
+updateQuestTable(quest2);
+updateQuestTable(quest3);
