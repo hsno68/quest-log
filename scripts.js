@@ -36,9 +36,9 @@ function updateQuestLog(quest) {
 function updateQuestTable(quest) {
   const index = questLog.length - 1;
   const tableRow = document.createElement("tr");
-  tableRow.setAttribute("data-index", `${index}`)
+  tableRow.setAttribute("data-index", `${index}`);
   tableRow.addEventListener("click", () => { //Toggle quest status
-    quest.toggleStatus(tableRow)
+    quest.toggleStatus(tableRow);
   });
   for (let prop in quest) {
     if (!quest.hasOwnProperty(prop)) {
@@ -57,6 +57,9 @@ function updateQuestTable(quest) {
     }
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
+  }
+  if (quest.status === "Completed") {
+    updateRowStatusColor(tableRow);
   }
   const removeButton = createButton(tableRow); //Button creation
   tableRow.appendChild(removeButton);
@@ -93,6 +96,14 @@ function updateDOMTableIndex() {
   }
 }
 
+//Change background color if quest complete
+function updateRowStatusColor(row) {
+  const cells = row.querySelectorAll("*:not(button)");
+  cells.forEach(cell => {
+    cell.classList.toggle("completed");
+  });
+}
+
 //Constructor
 function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
@@ -113,10 +124,11 @@ Quest.prototype.toggleStatus = function(row) {
     this.status = "Available";
     statusCell.textContent = "Available";
   }
+  updateRowStatusColor(row);
 }
 
 //Initial placeholder
-const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", "Completed");
+const quest1 = new Quest("Cook's Assistant", "Novice", 1, "01/04/2001", "Available");
 const quest2 = new Quest("Vampyre Slayer", "Intermediate", 3, "01/28/2001", "Available");
 const quest3 = new Quest("Dragon Slayer I", "Experienced", 2, "09/23/2001", "Available");
 
