@@ -22,17 +22,19 @@ form.addEventListener("submit", (e) => {
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
-  updateQuestTable(newQuest);
   form.reset();
 });
 
 function updateQuestLog(quest) {
   questLog.push(quest);
+  updateQuestTable(quest);
 }
 
 //Update DOM
 function updateQuestTable(quest) {
+  const index = questLog.length - 1;
   const tableRow = document.createElement("tr");
+  tableRow.setAttribute("data-index", `${index}`)
   for (let prop in quest) {
     let tableCell;
     if (prop === "name") {
@@ -83,7 +85,3 @@ const questLog = [];
 updateQuestLog(quest1);
 updateQuestLog(quest2);
 updateQuestLog(quest3);
-updateQuestTable(quest1);
-updateQuestTable(quest2);
-updateQuestTable(quest3);
-updateDOMTableIndex();
