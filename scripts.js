@@ -56,6 +56,15 @@ function updateQuestTable(quest) {
   table.appendChild(tableRow);
 }
 
+function updateDOMTableIndex() {
+  const tableRows = document.querySelectorAll("tbody > tr");
+  if (questLog.length > 0 && tableRows.length > 0) {
+    for (let i = 0; i < questLog.length; i++) {
+      tableRows[i].setAttribute("data-index", `${i}`);
+    }
+  }
+}
+
 //Constructor
 function Quest(name, difficulty, points, releaseDate, status) {
   this.name = name;
@@ -77,3 +86,4 @@ updateQuestLog(quest3);
 updateQuestTable(quest1);
 updateQuestTable(quest2);
 updateQuestTable(quest3);
+updateDOMTableIndex();
