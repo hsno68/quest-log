@@ -10,9 +10,9 @@ form.addEventListener("submit", (e) => {
   const questPoints = document.querySelector("#points").value;
   const questStatus = document.querySelector('input[name="status"]:checked').value;
   //Formats the parsed date
-  const questReleaseDate= ((date) => {
+  const questReleaseDate = ((date) => {
     if (!date) {
-      return;
+      return "";
     }
     const month = date.substring(5, 7);
     const day = date.substring(8);
