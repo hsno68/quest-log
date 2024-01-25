@@ -47,15 +47,27 @@ function updateQuestTable(quest) {
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
   }
-  const removeButton = document.createElement("button");
-  removeButton.setAttribute("type", "button");
-  removeButton.classList.add("material-symbols-outlined", "remove-button");
-  removeButton.textContent = "remove";
-  removeButton.addEventListener("click", () => {
-    table.removeChild(tableRow);
-  });
+  const removeButton = createButton(tableRow);
   tableRow.appendChild(removeButton);
   table.appendChild(tableRow);
+}
+
+function createButton(questRow) {
+  const button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.classList.add("material-symbols-outlined", "remove-button");
+  button.textContent = "remove";
+  button.addEventListener("click", () => {
+    removeQuest(questRow);
+  });
+  return button;
+}
+
+function removeQuest(questRow) {
+  const removedRow = table.removeChild(questRow);
+  const removedIndex = removedRow.getAttribute("data-index");
+  questLog.splice(removedIndex, 1);
+  updateDOMTableIndex();
 }
 
 function updateDOMTableIndex() {
