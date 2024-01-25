@@ -8,29 +8,31 @@ form.addEventListener("submit", (e) => {
   const questName = document.querySelector("#name").value;
   const questDifficulty = document.querySelector("#difficulty").value;
   const questPoints = document.querySelector("#points").value;
+  const questReleaseDate = dateFormatter(document.querySelector("#release-date").value);
   const questStatus = document.querySelector('input[name="status"]:checked').value;
-  //Formats the parsed date
-  const questReleaseDate = ((date) => {
-    if (!date) {
-      return "";
-    }
-    const month = date.substring(5, 7);
-    const day = date.substring(8);
-    const year = date.substring(0, 4);
-    return (`${month}/${day}/${year}`);
-  })(document.querySelector("#release-date").value);
 
   const newQuest = new Quest(questName, questDifficulty, questPoints, questReleaseDate, questStatus);
   updateQuestLog(newQuest);
   form.reset();
 });
 
+//Format the parsed date
+function dateFormatter(date) {
+  if (!date) {
+    return "";
+  }
+  const month = date.substring(5, 7);
+  const day = date.substring(8);
+  const year = date.substring(0, 4);
+  return (`${month}/${day}/${year}`);
+}
+
 function updateQuestLog(quest) {
   questLog.push(quest);
   updateQuestTable(quest);
 }
 
-//Update DOM
+//Generate DOM
 function updateQuestTable(quest) {
   const index = questLog.length - 1;
   const tableRow = document.createElement("tr");
@@ -47,29 +49,32 @@ function updateQuestTable(quest) {
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
   }
-  const removeButton = createButton(tableRow);
+  const removeButton = createButton(tableRow); //Button creation
   tableRow.appendChild(removeButton);
   table.appendChild(tableRow);
 }
 
+//Button creation
 function createButton(questRow) {
   const button = document.createElement("button");
   button.setAttribute("type", "button");
   button.classList.add("material-symbols-outlined", "remove-button");
   button.textContent = "remove";
   button.addEventListener("click", () => {
-    removeQuest(questRow);
+    removeQuest(questRow); //Remove functionality
   });
   return button;
 }
 
+//Remove quest
 function removeQuest(questRow) {
   const removedRow = table.removeChild(questRow);
   const removedIndex = removedRow.getAttribute("data-index");
   questLog.splice(removedIndex, 1);
-  updateDOMTableIndex();
+  updateDOMTableIndex(); //Update DOM index
 }
 
+//Update DOM with new index positions from new array
 function updateDOMTableIndex() {
   const tableRows = document.querySelectorAll("tbody > tr");
   if (questLog.length > 0 && tableRows.length > 0) {
