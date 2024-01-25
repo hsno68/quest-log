@@ -5,10 +5,11 @@
 }
 
 :root {
-  --main-text-color: #f1f1f1;
-  --main-border-color: #303030;
-  --main-background-color: #0f0f0f;
-  --main-background-contrast: #222222;
+  --main-text-color: #0f0f0f;
+  --main-border-color: #94866d;
+  --main-header-color: #b8a282;
+  --main-background-color: #e2dbc8;
+  --main-background-contrast: #d8ccb4;
 }
 
 body {
@@ -35,8 +36,17 @@ caption {
 th, td {
   min-width: 150px;
   min-height: auto;
-  border: 1px solid var(--main-text-color);
+  border: 1px solid var(--main-border-color);
   padding: 10px;
+}
+
+thead {
+  background-color: var(--main-header-color);
+}
+
+tbody th,
+tbody td {
+  background-color: var(--main-background-contrast);
 }
 
 tbody tr:hover {
@@ -95,7 +105,7 @@ form > div:last-of-type > div {
 }
 
 input[type="radio"] {
-  accent-color: var(--main-background-contrast);
+  accent-color: var(--main-text-color);
 }
 
 form button {
@@ -104,13 +114,13 @@ form button {
   font-weight: bold;
   padding: 12px 24px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--main-border-color);
   transition: all 0.2s ease-in-out;
 }
 
 form button:hover {
   cursor: pointer;
-  background-color: var(--main-border-color);
+  background-color: var(--main-background-color);
 }
 
 form button:active {
@@ -128,10 +138,9 @@ input::-webkit-inner-spin-button {
 .remove-button {
   margin: 10px;
   padding: 5px;
-  border: none;
+  border: 1px solid var(--main-border-color);
   border-radius: 50%;
   color: var(--main-text-color);
-  background-color: var(--main-background-contrast);
   opacity: 0;
   transition: all 0.2s ease-in-out;
 }
@@ -139,7 +148,7 @@ input::-webkit-inner-spin-button {
 .remove-button:hover {
   cursor: pointer;
   opacity: 1;
-  background-color: var(--main-border-color);
+  background-color: var(--main-background-contrast);
 }
 
 /*Toggle status*/
