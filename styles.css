@@ -120,11 +120,11 @@ form button {
 
 form button:hover {
   cursor: pointer;
-  background-color: var(--main-background-color);
 }
 
 form button:active {
   transform: translateY(5px);
+  background-color: var(--main-background-color);
 }
 
 /*Remove number input spinner*/
