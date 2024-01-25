@@ -37,7 +37,13 @@ function updateQuestTable(quest) {
   const index = questLog.length - 1;
   const tableRow = document.createElement("tr");
   tableRow.setAttribute("data-index", `${index}`)
+  tableRow.addEventListener("click", () => { //Toggle quest status
+    quest.toggleStatus(tableRow)
+  });
   for (let prop in quest) {
+    if (!quest.hasOwnProperty(prop)) {
+      continue;
+    }
     let tableCell;
     if (prop === "name") {
       tableCell = document.createElement("th");
@@ -45,6 +51,9 @@ function updateQuestTable(quest) {
     }
     else {
       tableCell = document.createElement("td");
+    }
+    if (prop === "status") { //Add marker to status cell
+      tableCell.setAttribute("data-status", "");
     }
     tableCell.textContent = quest[prop];
     tableRow.appendChild(tableCell);
@@ -91,6 +100,19 @@ function Quest(name, difficulty, points, releaseDate, status) {
   this.points = points;
   this.releaseDate = releaseDate;
   this.status = status;
+}
+
+//Quest status toggle
+Quest.prototype.toggleStatus = function(row) {
+  const statusCell = row.querySelector("td[data-status]");
+  if (this.status === "Available") {
+    this.status = "Completed";
+    statusCell.textContent = "Completed";
+  }
+  else {
+    this.status = "Available";
+    statusCell.textContent = "Available";
+  }
 }
 
 //Initial placeholder
