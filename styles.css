@@ -39,6 +39,7 @@ th, td {
   min-height: auto;
   border: 1px solid var(--main-border-color);
   padding: 10px;
+  transition: all 0.2s ease-in;
 }
 
 thead {
