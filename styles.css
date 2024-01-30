@@ -55,6 +55,11 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+tbody > tr:hover > th, 
+tbody > tr:hover > td {
+  background-color: #d0f3b2;
+}
+
 form {
   display: flex;
   flex-direction: column;
