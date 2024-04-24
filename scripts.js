@@ -104,27 +104,34 @@ function updateRowStatusColor(row) {
   });
 }
 
-//Constructor
-function Quest(name, difficulty, points, releaseDate, status) {
-  this.name = name;
-  this.difficulty = difficulty;
-  this.points = points;
-  this.releaseDate = releaseDate;
-  this.status = status;
-}
+class Quest {
+  //Constructor
+  name;
+  difficulty;
+  points;
+  releaseDate;
+  status;
+  constructor(name, difficulty, points, releaseDate, status) {
+    this.name = name;
+    this.difficulty = difficulty;
+    this.points = points;
+    this.releaseDate = releaseDate;
+    this.status = status;
+  }
 
 //Quest status toggle
-Quest.prototype.toggleStatus = function(row) {
-  const statusCell = row.querySelector("td[data-status]");
-  if (this.status === "Available") {
-    this.status = "Completed";
-    statusCell.textContent = "Completed";
+  toggleStatus(row) {
+    const statusCell = row.querySelector("td[data-status]");
+    if (this.status === "Available") {
+      this.status = "Completed";
+      statusCell.textContent = "Completed";
+    }
+    else {
+      this.status = "Available";
+      statusCell.textContent = "Available";
+    }
+    updateRowStatusColor(row);
   }
-  else {
-    this.status = "Available";
-    statusCell.textContent = "Available";
-  }
-  updateRowStatusColor(row);
 }
 
 //Initial placeholder
